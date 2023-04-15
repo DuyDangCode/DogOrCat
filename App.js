@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -24,6 +24,12 @@ const App = () => {
   const cameraRef = useRef();
   const [isProcessing, setIsProcessing] = useState(false);
   const [presentedShape, setPresentedShape] = useState('');
+  
+  useEffect(()=>{
+    async function getPermission(){
+      await Camera.requestCameraPermissionsAsync();
+    }
+  })
 
   const handleImageCapture = async () => {
     setIsProcessing(true);
