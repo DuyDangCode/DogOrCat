@@ -29,7 +29,8 @@ const App = () => {
     async function getPermission(){
       await Camera.requestCameraPermissionsAsync();
     }
-  })
+    getPermission();
+  },[]);
 
   const handleImageCapture = async () => {
     setIsProcessing(true);
